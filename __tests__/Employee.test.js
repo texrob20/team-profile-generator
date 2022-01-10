@@ -14,5 +14,5 @@ test ('get employee information', () =>{
     expect(employee.getName()).toHaveProperty('name');
     expect(employee.getId()).toHaveProperty('id');
     expect(employee.getEmail()).toHaveProperty('email');
-    expect(employee.getRole()).toHaveProperty('role');
+    expect(employee.getRole()).toBe('employee');
 })

@@ -1,8 +1,8 @@
 const Manager = require('../lib/Manager');
 
 test ('create an manager employee', () =>{
-    const manager = new Manager('Bob', '1', 'bob@company.com');
+    const manager = new Manager('Bob', '101');
 
-    expect(manager.officeNumber).toBe('101');
-    expect(employee.getRole()).toBe('manager');
+    expect(manager.office).toBe('101');
+    expect(manager.getRole()).toBe('manager');
 });
