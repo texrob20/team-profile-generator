@@ -5,8 +5,9 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern'); 
 
-var employees = [];    
+var employees = [];    //data set to collect all inputted employees
 
+// begins the creation of the team with the manager's information
 const addManager = () => {
     return inquirer.prompt([
     {
@@ -54,12 +55,14 @@ const addManager = () => {
             }}
     },
 ])
+//creates manager using Manager class
 .then (managerInfo => {
   let {name, id, email, office} = managerInfo;
   const manager = new Manager (name, id, email, office);
   employees.push(manager);
 })
 };
+// function to create employee, allows user to select either engineer or intern
 const addEmployee = () => {
     console.log(`-------------
     Add the next employee to the team
@@ -105,7 +108,7 @@ const addEmployee = () => {
                 }}
         },    
     {
-        type: 'input',
+        type: 'input', // only asked if the employee is an engineer
         message: "Provide the engineer's github username.",
         name: 'github',
         when: (input) => input.role === 'Engineer',
@@ -117,7 +120,7 @@ const addEmployee = () => {
             }}
     }, 
     {
-        type: 'input',
+        type: 'input',  // only asked if the employee is an intern
         message: "Provide the intern's school.",
         name: 'school',
         when: (input) => input.role === 'Intern',
@@ -128,13 +131,14 @@ const addEmployee = () => {
             return console.log("Please enter a school name.");
             }}
     },
-    {
+    {   // asks if another employee needs to be added
         type: 'confirm',
         name: 'confirmAddEmployee',
         message: 'Would you like to enter another employee?',
         default: false
     }, 
 ])
+// creates new employee based on role
 .then (employeeData => {
     let {name, id, email, role, github, school, confirmAddEmployee} = employeeData;
     let employee;
@@ -143,9 +147,8 @@ const addEmployee = () => {
     } else if (role === "Intern") {
         employee = new Intern (name, id, email, school);
     }
-    //console.log(employee);
-    employees.push(employee);
-    //console.log(employees);
+    employees.push(employee); //adds new employee to data set
+    // checks to see if another employee needs to be added
     if (confirmAddEmployee) {
         return addEmployee(); 
     } else {
@@ -153,7 +156,7 @@ const addEmployee = () => {
     }
 })
 };
-
+// takes generated html code and writes it to the index.html file
 function writeToFile(data) {
   fs.writeFile('./dist/index.html', data, err => {
     if (err) {
@@ -164,7 +167,7 @@ function writeToFile(data) {
     }
   })
 }
-
+// execution of code starting with manager, then employees, then html generation, then creation of file
 addManager()
 .then (addEmployee)
 .then (employees => {

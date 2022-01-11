@@ -1,5 +1,5 @@
-var employeeCards = [];
-
+var employeeCards = [];  //data set to hold employee cards as they are created
+// creates manager card
 const managerCard = manager => {
     return `
     <div class="col-4 mt-4">
@@ -17,7 +17,7 @@ const managerCard = manager => {
     </div>
     `;
 }
-
+//creates engineer card
 const engineerCard = engineer => {
     return `
     <div class="col-4 mt-4">
@@ -35,7 +35,7 @@ const engineerCard = engineer => {
     </div>
     `;
 }
-
+//creates intern card
 const internCard = intern => {
     return `
     <div class="col-4 mt-4">
@@ -53,7 +53,7 @@ const internCard = intern => {
     </div>
     `;
 }
-
+// function used to create cards for each employee entered in the command prompt
 generateHTML = (data) => {
   for (i =0; i < data.length; i++){
     const employee = data[i];
@@ -67,10 +67,10 @@ generateHTML = (data) => {
     }
       employeeCards.push(card); 
     }
-  const generatedHTML = generatePage(employeeCards);
+  const generatedHTML = generatePage(employeeCards);  // adds cards to page template
   return generatedHTML;
 }
-
+// page template used to create index.html
 const generatePage = employeeCards => {
     return `
 <!DOCTYPE html>
