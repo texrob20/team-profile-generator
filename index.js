@@ -58,10 +58,12 @@ const addManager = () => {
   let {name, id, email, office} = managerInfo;
   const manager = new Manager (name, id, email, office);
   employees.push(manager);
-  console.log(manager);
 })
 };
 const addEmployee = () => {
+    console.log(`-------------
+    Add the next employee to the team
+    -------------`);
     return inquirer.prompt([  
         {
             type: 'list',
@@ -134,32 +136,43 @@ const addEmployee = () => {
     }, 
 ])
 .then (employeeData => {
-    let {name, id, email, role, office, github, school, confirmAddEmployee} = employeeData;
+    let {name, id, email, role, github, school, confirmAddEmployee} = employeeData;
     let employee;
     if (role === "Engineer") {
         employee = new Engineer (name, id, email, github);
     } else if (role === "Intern") {
         employee = new Intern (name, id, email, school);
     }
-    console.log(employee);
+    //console.log(employee);
     employees.push(employee);
-    console.log(employees);
+    //console.log(employees);
     if (confirmAddEmployee) {
-        addEmployee(employees); 
+        return addEmployee(); 
     } else {
         return employees;
     }
 })
 };
 
+function writeToFile(data) {
+  fs.writeFile('./dist/index.html', data, err => {
+    if (err) {
+       console.log(err);
+       return;
+    } else {
+       console.log("The team profile page has been created.  It can be viewed at index.html")
+    }
+  })
+}
+
 addManager()
 .then (addEmployee)
-//.then (employees => {
-//  return generateHTML(employees);
-//}) 
-//.then (pageHTML => {
-//    return writeToFile(pageHTML);
-//})     
+.then (employees => {
+  return generateHTML(employees);
+}) 
+.then (page => {
+    return writeToFile(page);
+})     
 .catch(err => {
     console.log(err);
 });
