@@ -3,12 +3,12 @@ var employeeCards = [];
 const managerCard = manager => {
     return `
     <div class="col-4 mt-4">
-        <div class="card">
+        <div class="card shadow rounded-2">
             <div class="card-header bg-success">
                 <h3>${manager.name}</h3>
                 <h4><i class="fas fa-coffee"></i> Manager</h4>
             </div>
-            <div class="card-body bg-secondary">
+            <div class="card-body bg-light">
                 <p class="id">ID: ${manager.id}</p>
                 <p class="email">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
                 <p class="office">Office Number: ${manager.office}</p>
@@ -21,15 +21,15 @@ const managerCard = manager => {
 const engineerCard = engineer => {
     return `
     <div class="col-4 mt-4">
-        <div class="card">
+        <div class="card shadow rounded-2">
             <div class="card-header bg-info">
                 <h3>${engineer.name}</h3>
                 <h4><i class="fas fa-glasses"></i> Engineer</h4>
             </div>
-            <div class="card-body bg-secondary">
+            <div class="card-body bg-light">
                 <p class="id">ID: ${engineer.id}</p>
                 <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
-                <p class="office">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
+                <p class="office">GitHub: <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a></p>
             </div>
         </div>
     </div>
@@ -39,12 +39,12 @@ const engineerCard = engineer => {
 const internCard = intern => {
     return `
     <div class="col-4 mt-4">
-        <div class="card">
+        <div class="card shadow rounded-2">
             <div class="card-header bg-waring">
                 <h3>${intern.name}</h3>
                 <h4><i class="fas fa-graduation-cap"></i> Intern</h4>
             </div>
-            <div class="card-body bg-secondary">
+            <div class="card-body bg-light">
                 <p class="id">ID: ${intern.id}</p>
                 <p class="email">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
                 <p class="office">School: ${intern.school}</p>
