@@ -28,6 +28,6 @@ The page template is written to a file and the user can view the created page in
 ## Demo Video
 https://github.com/texrob20/team-profile-generator/blob/main/demo/OOP_challenge_demo.webm or
 
-https://watch.screencastify.com/
+https://watch.screencastify.com/v/VWMGDliUfcAiJWbDKrJk
 
 Generated HTML - https://github.com/texrob20/team-profile-generator/blob/main/dist/index.html
