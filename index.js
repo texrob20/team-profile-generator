@@ -64,9 +64,9 @@ const addManager = () => {
 };
 // function to create employee, allows user to select either engineer or intern
 const addEmployee = () => {
-    console.log(`-------------
-    Add the next employee to the team
-    -------------`);
+    console.log(`----------------------------------
+Add the next employee to the team
+----------------------------------`);
     return inquirer.prompt([  
         {
             type: 'list',
